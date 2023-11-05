@@ -20,7 +20,7 @@ public class Main {
 //        }
 //        String activeProfile = properties.getProperty("spring.profiles.active");
 //        System.setProperty("spring.profiles.active", activeProfile);
-        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(InitAppConfig.class, DefaultAppConfig.class);
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(DefaultAppConfig.class, InitAppConfig.class);
         applicationContext.getBean("application", org.example.Application.class).start();
     }
 }

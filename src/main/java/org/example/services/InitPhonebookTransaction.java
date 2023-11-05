@@ -1,7 +1,6 @@
 package org.example.services;
 
 import org.example.entity.Contact;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

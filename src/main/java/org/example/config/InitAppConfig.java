@@ -6,21 +6,21 @@ import org.springframework.context.annotation.*;
 
 import java.io.IOException;
 
-@Configuration
-@PropertySource("application-init.properties")
-@Profile("init")
 @ComponentScan("org.example")
+@Configuration
+@PropertySource("classpath:application.properties")
+@Profile("init")
 public class InitAppConfig {
 
     @Bean
     public PhonebookTransactions phonebookTransactions(){
-        System.out.println("init app");
         return new InitPhonebookTransaction();
     }
 
 
     @Bean
     public Application application(){
+        System.out.println("init app");
         return new Application(phonebookTransactions());
     }
 
