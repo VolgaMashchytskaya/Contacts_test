@@ -13,17 +13,16 @@ import java.io.IOException;
 public class InitAppConfig {
 
     @Bean
-    public PhonebookTransactions phonebookTransactions(){
-        return new InitPhonebookTransaction();
+    public PhonebookTransactions phonebookTransactions() throws IOException {
+        return new InitPhonebookTransaction(contactsUploaderFromFile(),contactSaverToFile());
     }
 
 
     @Bean
-    public Application application(){
-        System.out.println("init app");
+    public Application application() throws IOException {
+        System.out.println("init applic");
         return new Application(phonebookTransactions());
     }
-
 
     @Bean
     public ContactSaverToFile contactSaverToFile(){
@@ -32,6 +31,7 @@ public class InitAppConfig {
 
     @Bean
     public ContactsUploaderFromFile contactsUploaderFromFile() throws IOException {
+        System.out.println("init contactsUploaderFromFile");
         return new ContactsUploaderFromFile();
     }
 

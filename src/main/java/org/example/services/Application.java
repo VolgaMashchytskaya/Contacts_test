@@ -28,7 +28,8 @@ public class Application {
 
             switch (input) {
                 case 1: {
-                    phonebookTransactions.showAllContacts();
+                    phonebookTransactions.
+                            showAllContacts();
                     break;
                 }
                 case 2: {

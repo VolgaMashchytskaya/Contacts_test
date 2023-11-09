@@ -3,23 +3,23 @@ package org.example;
 
 import org.example.config.DefaultAppConfig;
 import org.example.config.InitAppConfig;
+import org.example.services.ProfileSwitch;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.support.PropertiesLoaderUtils;
 import org.springframework.stereotype.Component;
 
-@Component
+import java.io.IOException;
+import java.util.Properties;
+
 public class Main {
+
     public static void main(String[] args) {
-//        ClassPathResource resource = new ClassPathResource("application.properties");
-//        Properties properties = null;
-//        try {
-//            properties = PropertiesLoaderUtils.loadProperties(resource);
-//        } catch (IOException e) {
-//            System.out.println("Ошибка чтения проперти файла");
-//        }
-//        String activeProfile = properties.getProperty("spring.profiles.active");
-//        System.setProperty("spring.profiles.active", activeProfile);
+        ProfileSwitch profileSwitch = new ProfileSwitch();
+
+        profileSwitch.profileSwitch();
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(DefaultAppConfig.class, InitAppConfig.class);
         applicationContext.getBean("application", org.example.Application.class).start();
     }

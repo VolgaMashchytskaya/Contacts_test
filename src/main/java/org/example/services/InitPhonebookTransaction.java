@@ -10,10 +10,17 @@ import java.util.Scanner;
 @Component
 public class InitPhonebookTransaction implements PhonebookTransactions {
 
+    public InitPhonebookTransaction(ContactsUploaderFromFile contactsUploaderFromFile, ContactSaverToFile contactSaverToFile) {
+        this.contactsUploaderFromFile = contactsUploaderFromFile;
+        this.contactSaverToFile = contactSaverToFile;
+    }
+
     ContactsUploaderFromFile contactsUploaderFromFile;
     ContactSaverToFile contactSaverToFile;
 
     List<Contact> contacts = new ArrayList<>();
+
+
     public void showAllContacts() {
         System.out.println("Имеющиеся контакты: ");
         contactsUploaderFromFile.uploadContactsFromFile().forEach(contact-> {
@@ -24,6 +31,7 @@ public class InitPhonebookTransaction implements PhonebookTransactions {
     }
 
     public void findContactByName() {
+        System.out.println("Введите имя:_____ ");
         Scanner console = new Scanner(System.in);
         String name = console.nextLine();
         System.out.println("Найдены контакты " + name + " : ");

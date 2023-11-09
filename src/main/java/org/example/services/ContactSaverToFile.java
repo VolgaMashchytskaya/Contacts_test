@@ -13,7 +13,7 @@ import java.util.List;
 
 @Component
 public class ContactSaverToFile {
-    @Value("${contacts.path.download}")
+    @Value("${contacts.path.save}")
     private String pathToSave;
 
     public void saveDataToFile(List<Contact> contacts) {
@@ -27,6 +27,7 @@ public class ContactSaverToFile {
                 }
             }
             bufferedWriter.flush();
+            System.out.println("Файл успешно сохранен");
         } catch (IOException e) {
             System.out.println("Не удалось найти файл, проверьте правильность пути !");
         }
